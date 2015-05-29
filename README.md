@@ -1,2 +1,2 @@
 # simple-spell-checker
-Simply form this repository and run: node spellChecker.js. 
+Simply fork this repository and run: node spellChecker.js. 
