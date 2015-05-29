@@ -13,6 +13,8 @@ var stream = require('stream');
  */
 var Dictionary = function(dictionaryFile){  
   this.root = new Trie('$');
+  var totalChars = 0;
+  var totalWords = 0;
   var self = this;
 
   // Preprocess file
@@ -25,13 +27,20 @@ var Dictionary = function(dictionaryFile){
 
   rl.on('line', function(line) {
     self.addWord(line);
+    totalWords++;
+    totalChars += line.length;
   });
 
   rl.on('close', function() {
-      //self.printDictionary(); // Comment in to display trie
-      console.log('Finished processing dictionary...');
-      console.timeEnd("Preprocess execution time");
-      console.log('Input some words!');
+    //self.printDictionary(); // Comment in to display trie
+    var hashmapSpace = totalChars;
+    var trieSpace = self.root.size() - totalWords ;
+
+    console.log('Finished processing dictionary...');
+    console.log('Hashmap chars:', hashmapSpace, '|', 'Trie chars:', trieSpace);
+    console.log('Space reduction: ', (100 * (hashmapSpace - trieSpace) / hashmapSpace).toFixed(1), "%");
+    console.timeEnd("Preprocess execution time");
+    console.log('Input some words!');
   });
 };
 

@@ -1,3 +1,4 @@
+var numberOfChars = 0;
 //========= Trie Implementation =========
 /*
  * Object: Trie(value)
@@ -10,13 +11,19 @@ var Trie = function(value){
   this.children = {};
 };
 
+Trie.prototype.size = function(){
+  return numberOfChars;
+}
+
 Trie.prototype.addChild = function(child){
   if (!child || !(child instanceof Trie)){
     child = new Trie(child);
   }
 
-  if(!this.children.hasOwnProperty(child.value))
+  if(!this.children.hasOwnProperty(child.value)){
     this.children[child.value] = child;
+    numberOfChars++;
+  }
 
   return this.children[child.value];
 };
