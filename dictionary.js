@@ -40,7 +40,7 @@ var Dictionary = function(dictionaryFile){
     console.log('Hashmap chars:', hashmapSpace, '|', 'Trie chars:', trieSpace);
     console.log('Space reduction: ', (100 * (hashmapSpace - trieSpace) / hashmapSpace).toFixed(1), "%");
     console.timeEnd("Preprocess execution time");
-    console.log('----- Input -----');
+    console.log('===== Input =====');
   });
 };
 

@@ -31,7 +31,7 @@ process.stdin.on('data', function (text) {
   console.timeEnd('Spell Check Execution Time');
   console.log('Words checked:', inputArray.length)
   console.log('----- Done ------\n');
-  console.log('----- Input -----');
+  console.log('===== Input =====');
 });
 
 function done() {
